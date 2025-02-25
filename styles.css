@@ -746,6 +746,12 @@ body {
     max-width: 600px;
   }
 
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+    padding-top: 10px;
+  }
+
   /* Project Grid */
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
