@@ -547,77 +547,97 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .hero {
-    padding: 2rem 1rem;
+  /* Base mobile adjustments */
+  body {
+    padding-top: 60px;
+    font-size: 14px;
   }
 
-  .hero-image-container {
-    width: 200px;
-    height: 200px;
-  }
-
-  .hero-image {
-    border: 2px solid var(--accent-color);
-  }
-
-  .project-card {
+  /* Navigation */
+  .glass-nav {
     padding: 1rem;
   }
 
-  .tech-icon {
-    font-size: 1.5rem;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-
   .glass-nav ul {
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 
+  .hover-underline {
+    justify-content: center;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 4rem 1rem;
+  }
+
+  .hero-image-container {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Project Grid */
   .project-grid {
     grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
   }
 
-  .scrolling-text {
-    animation: scrollText 30s linear infinite;
-  }
-  .hair-project::before {
-    font-size: 3rem;
+  .project-image {
+    height: 200px;
   }
 
-  .project-link {
-    padding: 10px 20px;
-  }
-
+  /* Skill Container */
   .skill-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
   }
 
-  .skill-card {
-    padding: 1.5rem;
-  }
-
-  .skill-icon {
-    font-size: 2rem;
-  }
-
-  .skill-bar {
-    margin: 1rem 0;
-  }
-
+  /* Contact Form */
   .contact-form {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
+  .form-input {
+    padding: 12px 12px 12px 35px;
+  }
+
+  /* Social Links */
   .social-container {
-    margin-top: 2rem;
+    gap: 1.5rem;
   }
 
   .social-icon {
     font-size: 1.5rem;
+  }
+
+  /* Typography Adjustments */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2.section-title {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  /* Project Links */
+  .project-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-link {
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* Utility Classes */
+  .glass-card {
+    backdrop-filter: blur(8px);
   }
 }
 
@@ -688,67 +708,124 @@ body {
 }
 
 @media screen and (min-width: 1024px) {
-  /* Navigation adjustments */
-  .glass-nav ul {
-    gap: 3rem;
-    padding: 0 2rem;
+  /* Desktop-Specific Enhancements */
+  body {
+    font-size: 18px;
+    line-height: 1.7;
   }
 
-  /* Hero section optimization */
+  /* Navigation */
+  .glass-nav {
+    padding: 2rem 4rem;
+  }
+
+  .glass-nav ul {
+    gap: 4rem;
+  }
+
+  .hover-underline {
+    font-size: 1.1em;
+  }
+
+  /* Hero Section */
   .hero {
-    padding: 8rem 2rem;
+    padding: 8rem 4rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
   }
 
   .hero-image-container {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
+    order: 2;
   }
 
-  /* Project grid adjustments */
+  .hero-content {
+    text-align: left;
+    max-width: 600px;
+  }
+
+  /* Project Grid */
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 2rem 4rem;
   }
 
-  /* Skill container modifications */
+  /* Skill Container */
   .skill-container {
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 4rem;
   }
 
-  /* Contact form adjustments */
+  /* Contact Form */
   .contact-form {
-    padding: 2rem;
+    max-width: 800px;
+    padding: 2rem 4rem;
+  }
+
+  /* Advanced Hover Effects */
+  .project-card:hover {
+    transform: translateY(-15px) rotate(2deg);
+    box-shadow: 0 25px 50px rgba(0, 255, 136, 0.15);
+  }
+
+  /* Parallax Effect */
+  .parallax-section {
+    background-attachment: fixed;
+  }
+
+  /* Typography Enhancements */
+  h1 {
+    font-size: 3.5rem;
+    letter-spacing: -1.5px;
+  }
+
+  h2.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+  }
+
+  /* Decorative Elements */
+  .section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 1.5rem auto;
+  }
+
+  /* Grid Animation */
+  .project-grid {
+    perspective: 1500px;
+  }
+
+  .project-card {
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  /* Social Links */
+  .social-container {
+    gap: 3rem;
+  }
+
+  .social-icon {
+    font-size: 2.2rem;
+  }
+
+  /* Form Enhancements */
+  .input-group {
+    margin-bottom: 2rem;
   }
 
   .form-input {
     padding: 1.5rem 1.5rem 1.5rem 50px;
-  }
-
-  /* Font size adjustments */
-  .section-title {
-    font-size: 2rem;
-  }
-
-  /* Social icons */
-  .social-container {
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-
-  /* Project overlay links */
-  .project-link {
-    padding: 1.2rem 1.8rem;
-    font-size: 1rem;
-  }
-
-  /* Skill card adjustments */
-  .skill-card {
-    padding: 2rem;
-  }
-
-  .skill-icon {
-    font-size: 2.5rem;
+    font-size: 1.1em;
   }
 }
