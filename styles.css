@@ -17,6 +17,7 @@ body {
   color: var(--text-primary);
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* Scrollbar */
