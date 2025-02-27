@@ -66,6 +66,11 @@
       </ul>
     </nav>
 
+    <!-- Add menu toggle here -->
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+
     <section id="home" class="hero parallax-section">
       <div class="hero-image-container">
         <img
@@ -253,6 +258,13 @@
       window.addEventListener("load", () => {
         document.querySelector(".loader").style.display = "none";
       });
+
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          const nav = document.querySelector(".glass-nav");
+          nav.classList.toggle("active");
+        });
     </script>
   </body>
 </html>
