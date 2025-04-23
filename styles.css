@@ -359,7 +359,7 @@ body {
   padding: 20px;
 }
 
-.project-card:hover .project-links {
+.project-card:hover .project-overlay {
   opacity: 1;
 }
 
