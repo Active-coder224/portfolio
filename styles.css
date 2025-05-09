@@ -219,6 +219,10 @@ body {
   width: 100%;
   top: 0;
   z-index: 1000;
+  /* Add these properties for all screen sizes */
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .glass-nav ul {
@@ -605,7 +609,7 @@ body {
     width: 100%;
     height: 100vh;
     background: rgba(10, 10, 10, 0.98);
-    transform: translateY(-100%);
+    transform: translateY(-100%); /* Hide by moving off-screen */
     transition: transform 0.3s ease-in-out;
     z-index: 999;
     display: block !important;
@@ -613,13 +617,6 @@ body {
 
   .glass-nav.active {
     transform: translateY(0);
-  }
-
-  .glass-nav ul {
-    flex-direction: column;
-    padding: 2rem;
-    height: 100%;
-    justify-content: center;
   }
 
   .menu-toggle {
@@ -661,16 +658,27 @@ body {
     transform: translateY(8px);
   }
 
-  .glass-nav.active + .menu-toggle .hamburger {
+  /* Fix for menu toggle button state */
+  .menu-toggle .hamburger {
+    background: var(--dark-bg);
+  }
+
+  .menu-toggle .hamburger::before,
+  .menu-toggle .hamburger::after {
+    background: var(--dark-bg);
+  }
+
+  /* When nav is active, change hamburger to X */
+  .glass-nav.active ~ .menu-toggle .hamburger {
     background: transparent;
   }
 
-  .glass-nav.active + .menu-toggle .hamburger::before {
-    transform: rotate(45deg);
+  .glass-nav.active ~ .menu-toggle .hamburger::before {
+    transform: translateY(0) rotate(45deg);
   }
 
-  .glass-nav.active + .menu-toggle .hamburger::after {
-    transform: rotate(-45deg);
+  .glass-nav.active ~ .menu-toggle .hamburger::after {
+    transform: translateY(0) rotate(-45deg);
   }
   /* Hero Section */
   .hero {

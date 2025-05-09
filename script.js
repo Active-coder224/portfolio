@@ -26,40 +26,72 @@ function initMenuToggle() {
   const menuToggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".glass-nav");
 
-  if (!menuToggle || !nav) return;
+  // Exit if elements don't exist
+  if (!menuToggle || !nav) {
+    console.error("Menu toggle or navigation elements not found");
+    return;
+  }
 
   // Set initial ARIA states
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-controls", "navigation");
 
-  if (nav.id === "") {
+  // Ensure nav has an ID for ARIA reference
+  if (!nav.id) {
     nav.id = "navigation";
   }
 
-  menuToggle.addEventListener("click", function () {
-    const isExpanded = nav.classList.contains("active");
+  // Toggle menu when clicking the menu button
+  menuToggle.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Toggle active class
     nav.classList.toggle("active");
 
-    // Update ARIA states
-    this.setAttribute("aria-expanded", !isExpanded);
+    // Update ARIA expanded state
+    const isExpanded = nav.classList.contains("active");
+    this.setAttribute("aria-expanded", isExpanded ? "true" : "false");
 
-    // Optional: trap focus within nav when open
-    if (!isExpanded) {
-      // Focus first focusable element in nav
-      setTimeout(() => {
-        const focusableElements = nav.querySelectorAll(
-          "a[href], button:not([disabled])"
-        );
-        if (focusableElements.length) focusableElements[0].focus();
-      }, 100);
+    // Log state for debugging
+    console.log("Nav menu toggled. Active:", isExpanded);
+  });
+
+  // Close menu when clicking on any menu item
+  const menuItems = nav.querySelectorAll("a");
+  menuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      closeNavMenu();
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener(
+    "click",
+    (e) => {
+      if (
+        nav.classList.contains("active") &&
+        !nav.contains(e.target) &&
+        e.target !== menuToggle
+      ) {
+        closeNavMenu();
+      }
+    },
+    { passive: true }
+  );
+
+  // Close menu when pressing Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("active")) {
+      closeNavMenu();
     }
   });
 }
 
 // Function to close the navigation menu
 function closeNavMenu() {
-  const menuToggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".glass-nav");
+  const menuToggle = document.querySelector(".menu-toggle");
 
   if (nav && nav.classList.contains("active")) {
     nav.classList.remove("active");
